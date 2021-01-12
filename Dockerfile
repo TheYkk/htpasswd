@@ -11,18 +11,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+FROM httpd:2.4-alpine as passwd
 
-FROM alpine:3.11
+FROM alpine:3.12
+
+RUN apk add apr-util
+
 LABEL maintainer="Kaan Karakaya <yusufkaan142@gmail.com>"
 
-RUN apk add --no-cache openssl && \
-    rm -rf /var/cache/apk/*
+COPY --from=passwd /usr/local/apache2/bin/htpasswd /htpasswd
 
-COPY ./genpass.sh ./test.sh ./
-
-RUN chmod +x ./genpass.sh ./test.sh
-
-
-ENTRYPOINT ["./genpass.sh"]
-
-CMD ["admin","admin"]
+ENTRYPOINT ["/htpasswd", "-n"]

@@ -19,15 +19,12 @@
 ## To run image
 
 ```
-docker run theykk/htpasswd username password
-
-#Or generate User: admin Password: admin 
-
-docker run theykk/htpasswd
+docker run theykk/htpasswd username
+```
 
 #Write to file
-
-docker run theykk/htpasswd username password > .htpasswd
+```
+docker run theykk/htpasswd -b username password > .htpasswd
 ```
 
 ## To build image

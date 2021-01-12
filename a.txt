@@ -1,0 +1,4 @@
+New password: 
+Re-type new password: 
+Adding password for user kaan
+kaan:$apr1$TobYmPuU$XOnpzLND4eTtLNesfnvGC/
